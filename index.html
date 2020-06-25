@@ -1,18 +1,402 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>钟志茂的个人主页</title>
+    <link href="image/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/examples.css">
+    <link rel="stylesheet" href="css/zzsc-demo.css">
+    <style type="text/css">
+                          .stage {position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 5;pointer-events: none}
+
+
+
+                          * { margin: 0; padding: 0; border: 0; }
+    html,body{
+        margin: 0;
+    }
+    @-webkit-keyframes STAR-MOVE {
+        from {
+            background-position:0% 0%
+        }
+        to {
+            background-position: 600% 0%
+        }
+    }
+    @keyframes STAR-MOVE {
+        from {
+            background-position: 0% 0%
+        }
+        to {
+            background-position: 600% 0%
+        }
+    }
+    div#background{
+        background: black url('image/background.png') repeat-x 5% 0%;
+        background-size: cover;
+        -webkit-animation: STAR-MOVE  200s linear infinite;
+        -moz-animation: STAR-MOVE  200s linear infinite;
+        -ms-animation: STAR-MOVE  200s linear infinite;
+        animation: STAR-MOVE  200s linear infinite;
+    }
+    div#midground{
+        background:url('image/midground.png')repeat 20% 0%;
+        z-index: 1;
+        -webkit-animation: STAR-MOVE  100s linear infinite;
+        -moz-animation: STAR-MOVE  100s linear infinite;
+        -ms-animation: STAR-MOVE  100s linear infinite;
+        animation: STAR-MOVE  100s linear infinite;
+    }
+    div#foreground{
+        background:url('image/foreground.png')repeat 35% 0%;
+        z-index: 2;
+        -webkit-animation: STAR-MOVE  50s linear infinite;
+        -moz-animation: STAR-MOVE  50s linear infinite;
+        -ms-animation: STAR-MOVE  50s linear infinite;
+        animation: STAR-MOVE  50s linear infinite;
+    }
+    </style>
 </head>
-
 <body>
+<div id="preloader">
+    <div id="preloader-inner"></div>
+</div>
+<canvas id="stage1" class="stage"></canvas>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">钟志茂的主页</a>
+        </div>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">主页<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">技能</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他主页<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">码云</a></li>
+                        <li><a href="#">CSDN</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">开源中国</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">GitChat</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入你要搜索的内容">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="" data-toggle="modal" data-target="#myModal">
+                        注册
+                </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="touxiang" src="image/touxiang.jpg"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人信息</a></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">填写注册信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label>用户名:</label>&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="name" placeholder="请输入你的用户名"/><hr>
+                            <label>密码:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="password" name="pws" placeholder="请输入你的密码"/><hr>
+                            <label>确认密码:</label>
+                            <input type="password" name="pws" placeholder="请确认你的密码"/><hr>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">注册</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--data-interval="间隔时间"设置自动轮播的间隔时间-->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="image/1.jpg" alt="第一张图片">
+            <div class="carousel-caption">
+                <p>First Slide</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="image/2.jpg" alt="第二张图片">
+            <div class="carousel-caption">
+               <p>Second Slide</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="image/3.jpg" alt="第三张图片">
+            <div class="carousel-caption">
+                <p>Third Slide</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="image/4.jpg" alt="第四张图片">
+            <div class="carousel-caption">
+                <p>Fourth Slide</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+    <audio autoplay loop preload="auto" controls>
+            <source src="image/bgm.mp3" autoplay="autoplay" type="audio/mpeg">
+            您的浏览器不支持 audio 元素。
+    </audio>
+    <div class="bg"></div>
+
+<hr>
+<div id="background"><div id="midground"><div id="foreground"><div class="row">
+    <div class="col-xs-3" id="myScrollspy">
+        <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+            <li class="active"><a>2020年最新前端学习路线</a></li>
+            <li><a href="#section-1">第一阶段</a></li>
+            <li><a href="#section-2">第二阶段</a></li>
+            <li><a href="#section-3">第三阶段</a></li>
+            <li><a href="#section-4">第四阶段</a></li>
+            <li><a href="#section-5">第五阶段</a></li>
+            <li><a href="#section-6">第六阶段</a></li>
+            <li><a href="#section-7">第七阶段</a></li>
+            <li><a href="#section-8">第八阶段</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-9">
+        <h2 id="section-1">第一阶段：前端核心基础</h2>
+        <p>1.网页界面技术1：HTML</p>
+        <p>2.网页界面技术2：CSS</p>
+        <p>3.网页交互技术1：JavaScript</p>
+        <p>4.网页交互技术2：DOM</p>
+        <p>5.网页交互技术3：BOM</p>
+        <hr/>
+        <h2 id="section-2">第二阶段：前端核心高级</h2>
+        <p>1.网页界面新版本1：HTML5（语义化标签，本地存储，音视频等）</p>
+        <p>2.网页界面新技术2：CSS3（过渡，动画等）</p>
+        <p>3.移动端开发移动端特性，适配等)</p>
+        <p>4:前端样式库 BootStrap</p>
+        <p>5前端绘團技术: Canvas</p>
+        <p>6.快速简洁图表可视化库 Echarts</p>
+        <p>7:流行图表可视化库D3</p>
+        <p>8:使用最广 JS函数库jQuery</p>
+        <p>9.移动端类jQuey：Zepto
+        <p>10版本控制工具1: SVN</p>
+        <p>11-版本控制工月2: GIT&Github</p>
+        <hr/>
+        <h2 id="section-3">第三阶段：JS后台技术</h2>
+        <p>1.强大的后台JS: Nodejs</p>
+        <p>2.高效的非关系型 数据库MongoDB</p>
+        <p>3.简洁的MongoDB操作库: Mongoose</p>
+        <p>4.后台Web开发框架1 Express</p>
+        <p>5.后台Web开发框架2: koa</p>
+        <p>6.后台模板引擎: EJS</p>
+        <p>7.实时通信聊天库: socket.io</p>
+        <p>8.网络通信协议: http,https</p>
+        <p>9.通信数据加枣MD5,jsonwebtoken</p>
+        <hr/>
+        <h2 id="section-4">第四阶段：前台交互</h2>
+        <p>1.AJAX</p>
+        <p>2.新型jx请求方式fetch</p>
+        <p>3.前后台ajax请求库: axios</p>
+        <p>4.RESTAPI</p>
+        <P>5.跨域全面解决方案</p>
+        <P>6.mock后台数据接 口的库Mock js/EasyMock</p>
+        <P>7.接口调试神器 postman</p>
+        <P>8.基于promise封装原生Ajax</p>
+        <P>9.axios源码剖析</p>
+        <P>10.基于promise实现axios封装及二次迭代</p>
+        <hr/>
+        <h2 id="section-5">第五阶段：JavaScript高级</h2>
+        <p>1-JS作用域与作用域链</p>
+        <p>2-JS原型与原型链</p>
+        <p>3-JS闭包</p>
+        <p>4-JS异步/事件循环机制</p>
+        <p>5-ES6新特性</p>
+        <p>6-ES7新特性</p>
+        <p>7-模块化规范1: CommonuJs</p>
+        <p>8-模块化规范2: ES6</p>
+        <p>9-模块化规范3: AMD</p>
+        <p>10-模块化规范4: CMD</p>
+        <p>11-构建工具1: Grunt</p>
+        <p>12- 构建工具2: Gulp</p>
+        <p>13构建工具3: Webpack</p>
+        <hr/>
+        <h2 id="section-6">第六阶段：前端新型web框架</h2>
+        <p>1-Google出品MWM库: Angular</p>
+        <p>2.Facebook出品组件化库 React</p>
+        <p>3-Reac路由插件库 React Router</p>
+        <p>4-React应用状态管理库: Redux</p>
+        <p>5- React PC端U组件库: Ant Design</p>
+        <p>6-React 移动端U培件库Antd Mobile</p>
+        <p>7-React服务 器端渲染技术</p>
+        <p>8 React实战项目:硅谷外卖后台管理系统</p>
+        <p>9国内量流行的M库:Wue</p>
+        <p>10-Vue路由库: Vue Router</p>
+        <p>11-Vue状态管理库Vuex</p>
+        <p>12.Vue PC端UI组件库Element-ul</p>
+        <p>13-Wue移动端U组件库Mint-UI</p>
+        <p>14-Vue服务器端渲染</p>
+        <p>15.Vue实战项目:硅谷外卖SPA</p>
+        <p>16.项目部署上线</p>
+        <p>17 Nginx反向代理</p>
+        <hr/>
+        <h2 id="section-7">第七阶段：跨平台开发</h2>
+        <p>1-微信小程序开发</p>
+        <p>2.微售小程序框架mpvue</p>
+        <p>3-微信小程序项目:硅谷书城项目+硅谷周刊</p>
+        <p>4微信公众号开发</p>
+        <p>5.跨平台移动应用开发框架ReactNative</p>
+        <p>6-国内最流行的跨平台开发框架: MUI</p>
+        <p>7-H5Hybrid移动端混合开发框架ionic</p>
+        <hr/>
+        <h2 id="section-8">第八阶段：底层原理实现</h2>
+        <p>1-自定Xpromise</p>
+        <p>2-自定义Axios</p>
+        <p>3-自定XEventBus></p>
+        <p>4自定义React, Vue脚手架</p>
+        <p>5-自定义实现lodash方法</p>
+    </div>
+</div></div></div></div>
+
+<div class="page-header wrapper">
+    <h1>本页面所用到的技术<span>&nbsp;</span></h1>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="image/html5.jpg" alt="...">
+            <div class="caption">
+                <h1>HTML5</h1>
+                <p>HTML5是构建Web内容的一种语言描述方式。HTML5是互联网的下一代标准，是构建以及呈现互联网内容的一种语言方式．被认为是互联网的核心技术之一。HTML产生于1990年，1997年HTML4成为互联网标准，并广泛应用于互联网应用的开发。
+                    HTML5是Web中核心语言HTML的规范，用户使用任何手段进行网页浏览时看到的内容原本都是HTML格式的，在浏览器中通过一些技术处理将其转换成为了可识别的信息。</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="image/CSS3.jpg" alt="...">
+            <div class="caption">
+                <h1>CSS3</h1>
+                <p>CSS3是CSS技术的升级版本，朝着模块化发展。CSS即层叠样式表（Cascading StyleSheet），是在网页制作时采用的层叠样式表技术，可以有效地对页面的布局、字体、颜色、背景和其它效果实现更加精确的控制。CSS庞大而且比较复杂，CSS3把CSS分解为一些小的模块，更多新的模块也被加入进来。CSS3中的模块包括： 盒子模型、列表模块、语言模块 、背景和边框 、文字特效 、多栏布局等。
+                </p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="image/JavaScript.jpg" alt="...">
+            <div class="caption">
+                <h1>JavaScript</h1>
+                <p>JavaScript（缩写为JS）是一种高级的、多范式、解释型的编程语言，是一门基于原型、函数先行的语言，它支持面向对象编程、命令式编程以及函数式编程。它提供语法来操控文本、数组、日期以及正则表达式，不支持I/O（比如网络、存储和图形等），但可以由它的宿主环境提供支持。它已经由ECMA（欧洲计算机制造商协会）通过ECMAScript实现语言的标准化。它被世界上的绝大多数网站所使用。</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="image/jQuery.jpg" alt="...">
+            <div class="caption">
+                <h1>jQuery</h1>
+                <p>jquery是一个快速、简洁的JavaScript框架，是prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jquery设计的宗旨是“write Less，Do More”（即倡导写更少的代码，做更多的事情），其核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的css选择器，并且可对CSS选择器进行扩展；拥有便捷的插件扩展机制和丰富的插件。</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="image/bootstrap.jpg" alt="...">
+            <div class="caption">
+                <h1>Bootstrap</h1>
+                <p>Bootstrap是Twitter推出的一个开源的用于前端开发的工具包，是一个CSS/HTML框架。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC（微软全国广播公司）的Breaking News都使用了该项目。</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="com-footer" style="height: auto">
+    <div class="footer-wrapper" >
+        <div class="text">
+            <div class="footer1"><p><span>版权所有 本站内容未经书面许可,禁止一切形式的转载</span>
+                <span class="ml">&copy; CopyRight&nbsp;2020</span></p>
+            <a class="ml" href="//www.zhongzhimao.com" target="_blank" rel="nofollow">
+                我的学习分享http://www.zhongzhimao.com                </a>
+            <a class="miitbeian ml" href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow">
+                赣ICP备20000565号-2                </a>
+            <a href="" target="_blank" style="margin-left: 20px;text-decoration: underline;">我要反馈</a></div>
+            <p class="ml" style="text-algin:center;margin: 15px auto;"><div style="margin:0 auto;padding:20px 0;text-align: center;">
+
+                <a target="_blank" href=" http://www.beian.gov.cn/"
+
+                   style="display:inline-block;text-decoration:none;">
+                    <img src="https://p1static.dataoke.com/web/img/beian.png" style="float:left;">
+            <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px;">京公网安备 1101060232210号</p>
+            </a>
+        </div>
+        <p class="footer" style='text-align:center;'>zhongzhimao-版权所有</p></p>
+    </div>
+</div>
 </body>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/js.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/kefu.js"></script>
+<script src="js/jquery.preloader.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(window).preloader({
+        delay: 3000
+    });
+</script>
 </html>

@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-inner>.item>img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ul.nav-tabs{
+    width: 140px;
+    margin-top: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+ul.nav-tabs li{
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+ul.nav-tabs li:first-child{
+    border-top: none;
+}
+ul.nav-tabs li a{
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 0;
+}
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+    color: #fff;
+    background: #0088cc;
+    border: 1px solid #0088cc;
+}
+ul.nav-tabs li:first-child a{
+    border-radius: 4px 4px 0 0;
+}
+ul.nav-tabs li:last-child a{
+    border-radius: 0 0 4px 4px;
+}
+ul.nav-tabs.affix{
+    top: 30px; /* Set the top position of pinned element */
+}
+.bg {
+    /* 歌词调整区 */
+    width: 100%;/* 歌词显示盒子宽 */
+    height: 100px;/* 歌词显示盒子高度，需要多显示几行歌词相应调大即可 */
+    /* background-color:#333; */ /* 歌词背景颜色 */
+    margin: 15px auto;
+    color: darkgrey;/* 歌词默认颜色,灰色 */
+    font-size: 12px;/* 歌词字体默认大小 */
+    overflow: hidden;
+    position: relative;
+    font-family: "微软雅黑";
+}
+
+.bg ul {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none;
+}
+
+.bg ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.bg ul li.active {
+    /* 歌词高亮滚动区 */
+    color: black;/* 歌词滚动高亮颜色 */
+    /* font-weight: bold; *//* 文本加粗，不要，太丑了！ */
+    font-size: 15px; /* 歌词滚动行文字大小 */
+}
+
+audio {
+    /* 播放器调整区 */
+    width: 100%; /* 调整播放器宽度 */
+    /* 其他要修改播放器在这里修改 */
+}
+.footer1{
+    text-align: center;
+}
+div.text {
+    background-color: #919ba5;
+    color: white;
+}
+
+element.style{
+    display: none;
+}
+.thumbnail img{
+    -webkit-transition: width 4s, height 4s, -webkit-transform 4s; /* For Safari 3.1 to 6.0 */
+    transition: width 4s, height 4s, transform 4s;
+}
+.thumbnail img:hover{
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+    transform: rotate(360deg);
+}
+img.touxiang{
+    border-radius: 50%;
+    width: 18px;
+
+}
+
+
+div.row>div.col-xs-9>*{
+    animation: myfirst 5s;
+    -webkit-animation: myfirst 5s; /* Safari 与 Chrome */
+}
+
+.wrapper>h1 {
+    position: relative;
+   text-align: center;
+    color: #d7b94c;
+    font-family: 'Inconsolata', Consolas, monospace;
+    font-size: 4em;
+
+}
+.wrapper>h1 span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #1d1f20;
+    width: 100%;
+    border-left: .1em solid transparent;
+    -webkit-animation: typing 10s steps(16) forwards,
+    cursor 1s infinite;
+    animation: typing 10s steps(16) forwards,
+    cursor 1s infinite;
+}
+@-webkit-keyframes typing{
+    from { width: 100%;}
+    to { width: 0;}
+}
+@-webkit-keyframes cursor{
+    50% { border-color: white;}
+}
+@keyframes typing{
+    from{ width: 100%;}
+    to{ width: 0;}
+}
+@keyframes cursor{
+    50% { border-color: white;}
+}
